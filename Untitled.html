@@ -1,0 +1,4149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IELTS with Adi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        /* ============ VARIABLES ============ */
+        :root {
+            /* Color scheme */
+            --primary-color: #3a86ff;
+            --primary-light: #61a0ff;
+            --primary-dark: #0a66c2;
+            --accent-color: #fb5607;
+            --accent-light: #ff7b39;
+            --accent-dark: #d94400;
+            --text-primary: #f8f9fa;
+            --text-secondary: #adb5bd;
+            --text-tertiary: #6c757d;
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #121212;
+            --bg-tertiary: #1a1a1a;
+            --bg-gradient: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
+            --success-color: #38b000;
+            --warning-color: #ffaa00;
+            --error-color: #e63946;
+            
+            /* Typography */
+            --font-primary: 'Space Grotesk', sans-serif;
+            --font-secondary: 'Poppins', sans-serif;
+            --font-size-xs: 0.75rem;    /* 12px */
+            --font-size-sm: 0.875rem;   /* 14px */
+            --font-size-md: 1rem;       /* 16px */
+            --font-size-lg: 1.125rem;   /* 18px */
+            --font-size-xl: 1.25rem;    /* 20px */
+            --font-size-2xl: 1.5rem;    /* 24px */
+            --font-size-3xl: 2rem;      /* 32px */
+            --font-size-4xl: 2.5rem;    /* 40px */
+            --font-size-5xl: 3rem;      /* 48px */
+            --font-size-6xl: 4rem;      /* 64px */
+            
+            /* Spacing */
+            --space-xs: 0.25rem;  /* 4px */
+            --space-sm: 0.5rem;   /* 8px */
+            --space-md: 1rem;     /* 16px */
+            --space-lg: 1.5rem;   /* 24px */
+            --space-xl: 2rem;     /* 32px */
+            --space-2xl: 3rem;    /* 48px */
+            --space-3xl: 4rem;    /* 64px */
+            
+            /* Borders & Shadows */
+            --border-radius-sm: 0.25rem;  /* 4px */
+            --border-radius-md: 0.5rem;   /* 8px */
+            --border-radius-lg: 1rem;     /* 16px */
+            --border-radius-xl: 2rem;     /* 32px */
+            --border-radius-full: 9999px;
+            --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.12);
+            --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.16);
+            --shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.24);
+            
+            /* Transitions */
+            --transition-fast: 0.2s;
+            --transition-medium: 0.3s;
+            --transition-slow: 0.5s;
+            
+            /* Z-index layers */
+            --z-background: -10;
+            --z-default: 1;
+            --z-tooltip: 10;
+            --z-fixed: 100;
+            --z-modal: 1000;
+        }
+        
+        /* Light theme variables */
+        :root.light-mode {
+            --primary-color: #2563eb;
+            --primary-light: #4f85ff;
+            --primary-dark: #0a4bcc;
+            --accent-color: #e74c3c;
+            --accent-light: #f75e4e;
+            --accent-dark: #c0392b;
+            --text-primary: #111827;
+            --text-secondary: #4b5563;
+            --text-tertiary: #6b7280;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f3f4f6;
+            --bg-tertiary: #e5e7eb;
+            --bg-gradient: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+        }
+        
+        /* ============ GLOBAL STYLES ============ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: var(--font-secondary);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+        
+        body.loaded {
+            opacity: 1;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-primary);
+            font-weight: 700;
+            line-height: 1.2;
+            margin: 0 0 var(--space-md);
+        }
+        
+        h1 {
+            font-size: var(--font-size-6xl);
+            line-height: 1;
+            letter-spacing: -0.025em;
+        }
+        
+        h2 {
+            font-size: var(--font-size-4xl);
+            letter-spacing: -0.02em;
+        }
+        
+        h3 {
+            font-size: var(--font-size-3xl);
+            letter-spacing: -0.015em;
+        }
+        
+        h4 {
+            font-size: var(--font-size-2xl);
+        }
+        
+        p {
+            margin-bottom: var(--space-md);
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+        
+        a:hover {
+            color: var(--primary-light);
+        }
+        
+        ul, ol {
+            margin-bottom: var(--space-md);
+            padding-left: var(--space-lg);
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        button {
+            cursor: pointer;
+            font-family: var(--font-secondary);
+        }
+        
+        textarea, input, select {
+            font-family: var(--font-secondary);
+        }
+        
+        /* ============ LAYOUT ============ */
+        .container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+        
+        .section {
+            position: relative;
+            padding: var(--space-3xl) 0;
+            overflow: hidden;
+        }
+        
+        .section-inner {
+            position: relative;
+            z-index: var(--z-default);
+        }
+        
+        /* ============ UTILITIES ============ */
+        .text-center {
+            text-align: center;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .text-primary {
+            color: var(--primary-color);
+        }
+        
+        .text-accent {
+            color: var(--accent-color);
+        }
+        
+        .highlight {
+            color: var(--accent-color);
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
+        
+        /* ============ BUTTONS ============ */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: var(--space-md) var(--space-xl);
+            border-radius: var(--border-radius-full);
+            font-family: var(--font-primary);
+            font-weight: 600;
+            font-size: var(--font-size-md);
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium), background-color var(--transition-medium);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        
+        .btn i {
+            margin-right: var(--space-sm);
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-light);
+            box-shadow: 0 10px 20px rgba(58, 134, 255, 0.2);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .btn-accent:hover {
+            background-color: var(--accent-light);
+            box-shadow: 0 10px 20px rgba(251, 86, 7, 0.2);
+        }
+        
+        .btn-outline {
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .btn-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            padding: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-xl);
+        }
+        
+        .btn-icon {
+            margin-right: 0;
+        }
+        
+        /* Magnetic button effect */
+        .magnetic-btn {
+            transition: transform var(--transition-medium) cubic-bezier(0.2, 1, 0.3, 1);
+            will-change: transform;
+        }
+        
+        /* Button hover animation */
+        .btn-animated {
+            overflow: hidden;
+        }
+        
+        .btn-animated::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transform: translateX(-100%);
+            z-index: -1;
+        }
+        
+        .btn-animated:hover::before {
+            animation: btn-shine 1.5s;
+        }
+        
+        @keyframes btn-shine {
+            100% {
+                transform: translateX(100%);
+            }
+        }
+        
+        /* ============ LOADERS ============ */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: var(--z-modal);
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .page-loader.loaded {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-content {
+            text-align: center;
+        }
+        
+        .loader-logo {
+            width: 100px;
+            height: 100px;
+            margin-bottom: var(--space-md);
+            animation: pulse 2s infinite;
+        }
+        
+        .loader-text {
+            font-family: var(--font-primary);
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--primary-color);
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* ============ CURSOR ============ */
+        .cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            pointer-events: none;
+            mix-blend-mode: difference;
+            z-index: var(--z-modal);
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, background-color 0.3s;
+        }
+        
+        .cursor-follower {
+            position: fixed;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            pointer-events: none;
+            z-index: calc(var(--z-modal) - 1);
+            transform: translate(-50%, -50%);
+            transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
+        }
+        
+        /* Cursor states */
+        .cursor.hover {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            mix-blend-mode: normal;
+        }
+        
+        .cursor-follower.hover {
+            width: 0;
+            height: 0;
+            opacity: 0;
+        }
+        
+        .cursor.hidden, .cursor-follower.hidden {
+            opacity: 0;
+        }
+        
+        /* ============ HEADER & NAVIGATION ============ */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: var(--z-fixed);
+            padding: var(--space-md) 0;
+            transition: background-color var(--transition-medium), padding var(--transition-medium);
+        }
+        
+        .header-scrolled {
+            background-color: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: var(--space-sm) 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            z-index: var(--z-fixed);
+        }
+        
+        .logo-img {
+            height: 40px;
+            width: auto;
+            margin-right: var(--space-sm);
+        }
+        
+        .logo-text {
+            font-family: var(--font-primary);
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: color var(--transition-fast);
+        }
+        
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: var(--font-size-2xl);
+            cursor: pointer;
+            z-index: var(--z-fixed);
+        }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-list {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-item {
+            margin: 0 var(--space-md);
+        }
+        
+        .nav-link {
+            position: relative;
+            font-family: var(--font-primary);
+            font-size: var(--font-size-md);
+            font-weight: 500;
+            color: var(--text-primary);
+            transition: color var(--transition-fast);
+            padding: var(--space-xs) 0;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width var(--transition-medium);
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        .nav-link.active {
+            color: var(--primary-color);
+        }
+        
+        .nav-buttons {
+            display: flex;
+            margin-left: var(--space-xl);
+        }
+        
+        .theme-toggle {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: var(--font-size-md);
+            cursor: pointer;
+            margin-right: var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .theme-toggle:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        .light-mode .theme-toggle:hover {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        
+        .theme-toggle .fa-sun {
+            display: none;
+        }
+        
+        .theme-toggle .fa-moon {
+            display: block;
+        }
+        
+        .light-mode .theme-toggle .fa-sun {
+            display: block;
+        }
+        
+        .light-mode .theme-toggle .fa-moon {
+            display: none;
+        }
+        
+        /* Mobile navigation */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity var(--transition-medium), visibility var(--transition-medium);
+            z-index: var(--z-modal);
+        }
+        
+        .mobile-nav.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .mobile-nav-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .mobile-nav-item {
+            margin: var(--space-md) 0;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: transform var(--transition-medium), opacity var(--transition-medium);
+        }
+        
+        .mobile-nav.active .mobile-nav-item {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .mobile-nav.active .mobile-nav-item:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        
+        .mobile-nav.active .mobile-nav-item:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        
+        .mobile-nav.active .mobile-nav-item:nth-child(3) {
+            transition-delay: 0.3s;
+        }
+        
+        .mobile-nav.active .mobile-nav-item:nth-child(4) {
+            transition-delay: 0.4s;
+        }
+        
+        .mobile-nav.active .mobile-nav-item:nth-child(5) {
+            transition-delay: 0.5s;
+        }
+        
+        .mobile-nav-link {
+            font-family: var(--font-primary);
+            font-size: var(--font-size-3xl);
+            font-weight: 700;
+            color: var(--text-primary);
+            transition: color var(--transition-fast);
+        }
+        
+        .mobile-nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        /* ============ HERO SECTION ============ */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            overflow: hidden;
+        }
+        
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: var(--z-background);
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.7) 0%, rgba(10, 10, 10, 0.85) 100%);
+            z-index: calc(var(--z-background) + 1);
+        }
+        
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: calc(var(--z-background) + 2);
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: var(--z-default);
+            max-width: 900px;
+            padding: 0 var(--space-lg);
+        }
+        
+        .hero-title {
+            font-size: clamp(var(--font-size-4xl), 5vw, var(--font-size-6xl));
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: var(--space-xl);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 1s;
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(var(--font-size-lg), 2vw, var(--font-size-2xl));
+            color: var(--text-secondary);
+            margin-bottom: var(--space-2xl);
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 1.2s;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+            animation-delay: 1.4s;
+        }
+        
+        .hero-scroll {
+            position: absolute;
+            bottom: var(--space-xl);
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 2s;
+        }
+        
+        .hero-scroll-indicator {
+            width: 30px;
+            height: 50px;
+            border: 2px solid var(--text-secondary);
+            border-radius: 25px;
+            margin: 0 auto var(--space-sm);
+            position: relative;
+        }
+        
+        .hero-scroll-indicator::before {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background-color: var(--text-secondary);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            animation: scrollIndicator 2s infinite;
+        }
+        
+        @keyframes scrollIndicator {
+            0% {
+                transform: translate(-50%, 0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(-50%, 20px);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Text shuffle animation */
+        .text-shuffle {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .text-shuffle-items {
+            display: inline-block;
+            position: relative;
+            white-space: nowrap;
+            overflow: hidden;
+            vertical-align: top;
+        }
+        
+        .text-shuffle-wrapper {
+            position: absolute;
+            right: 0;
+            animation: cycleTexts 10s infinite;
+        }
+        
+        .text-shuffle-item {
+            margin-right: 10px;
+            line-height: 1.2;
+        }
+        
+        @keyframes cycleTexts {
+            0%, 20% {
+                transform: translateY(0%);
+            }
+            25%, 45% {
+                transform: translateY(-100%);
+            }
+            50%, 70% {
+                transform: translateY(-200%);
+            }
+            75%, 95% {
+                transform: translateY(-300%);
+            }
+            100% {
+                transform: translateY(-400%);
+            }
+        }
+        
+        /* ============ ABOUT SECTION ============ */
+        .about {
+            background-color: var(--bg-secondary);
+            position: relative;
+        }
+        
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: center;
+        }
+        
+        .about-image {
+            position: relative;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-slow);
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-content {
+            position: relative;
+        }
+        
+        .about-title {
+            margin-bottom: var(--space-lg);
+        }
+        
+        .about-text {
+            margin-bottom: var(--space-xl);
+        }
+        
+        .about-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .about-feature {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .about-feature-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-xl);
+            margin-right: var(--space-md);
+            flex-shrink: 0;
+        }
+        
+        .about-feature-content h4 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .about-feature-content p {
+            font-size: var(--font-size-sm);
+            margin-bottom: 0;
+            color: var(--text-secondary);
+        }
+        
+        /* Background blob */
+        .bg-blob {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(58, 134, 255, 0.15) 0%, rgba(58, 134, 255, 0) 70%);
+            z-index: var(--z-background);
+            filter: blur(40px);
+        }
+        
+        .bg-blob-1 {
+            top: -300px;
+            right: -300px;
+        }
+        
+        .bg-blob-2 {
+            bottom: -300px;
+            left: -300px;
+            background: radial-gradient(circle, rgba(251, 86, 7, 0.15) 0%, rgba(251, 86, 7, 0) 70%);
+        }
+        
+        /* ============ COURSES SECTION ============ */
+        .courses {
+            background-color: var(--bg-primary);
+        }
+        
+        .courses-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .courses-title {
+            margin-bottom: var(--space-md);
+        }
+        
+        .courses-description {
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: var(--space-xl);
+            color: var(--text-secondary);
+        }
+        
+        .courses-filters {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .courses-filter {
+            padding: var(--space-sm) var(--space-lg);
+            border-radius: var(--border-radius-full);
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            border: none;
+            cursor: pointer;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .courses-filter:hover, .courses-filter.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: var(--space-xl);
+        }
+        
+        .course-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .course-image {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .course-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+        
+        .course-card:hover .course-image img {
+            transform: scale(1.1);
+        }
+        
+        .course-badge {
+            position: absolute;
+            top: var(--space-md);
+            right: var(--space-md);
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--border-radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .course-badge.beginner {
+            background-color: #38b000;
+            color: white;
+        }
+        
+        .course-badge.intermediate {
+            background-color: #ffaa00;
+            color: white;
+        }
+        
+        .course-badge.advanced {
+            background-color: #e63946;
+            color: white;
+        }
+        
+        .course-content {
+            padding: var(--space-xl);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .course-title {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-md);
+        }
+        
+        .course-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+        
+        .course-meta-item {
+            display: flex;
+            align-items: center;
+        }
+        
+        .course-meta-item i {
+            margin-right: var(--space-xs);
+            color: var(--primary-color);
+        }
+        
+        .course-description {
+            margin-bottom: var(--space-md);
+            color: var(--text-secondary);
+            font-size: var(--font-size-md);
+        }
+        
+        .light-mode .course-description,
+        .light-mode .hero-subtitle,
+        .light-mode .about-text p,
+        .light-mode .courses-description,
+        .light-mode .testimonial-content p {
+            color: var(--text-primary);
+        }
+        
+        .course-features {
+            margin-bottom: var(--space-lg);
+            flex: 1;
+        }
+        
+        .course-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .course-features-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-sm);
+            font-size: var(--font-size-sm);
+        }
+        
+        .course-features-item i {
+            color: var(--primary-color);
+            margin-right: var(--space-sm);
+            margin-top: 4px;
+        }
+        
+        .light-mode .course-features-item {
+            color: var(--text-primary);
+        }
+        
+        .course-action {
+            margin-top: auto;
+        }
+        
+        /* ============ EDUCATORS SECTION ============ */
+        .educators {
+            background-color: var(--bg-secondary);
+        }
+        
+        .educators-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .educators-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-xl);
+        }
+        
+        .educator-card {
+            background-color: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+            position: relative;
+        }
+        
+        .educator-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .educator-image {
+            height: 350px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .educator-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform var(--transition-medium);
+        }
+        
+        .educator-card:hover .educator-image img {
+            transform: scale(1.1);
+        }
+        
+        .educator-content {
+            padding: var(--space-xl);
+            position: relative;
+        }
+        
+        .educator-name {
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .educator-position {
+            color: var(--primary-color);
+            font-size: var(--font-size-md);
+            margin-bottom: var(--space-md);
+        }
+        
+        .educator-rating {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+        
+        .educator-rating-stars {
+            color: #ffaa00;
+            margin-right: var(--space-sm);
+        }
+        
+        .educator-rating-count {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+        }
+        
+        .educator-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+            margin-bottom: var(--space-md);
+        }
+        
+        .educator-tag {
+            padding: var(--space-xs) var(--space-sm);
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: var(--border-radius-sm);
+            font-size: var(--font-size-xs);
+            color: var(--primary-color);
+        }
+        
+        .light-mode .educator-tag {
+            background-color: rgba(37, 99, 235, 0.15);
+            color: var(--primary-dark);
+        }
+        
+        .educator-info {
+            margin-top: var(--space-lg);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+        
+        .educator-info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .educator-info-label {
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .educator-info-value {
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+        
+        .educator-action {
+            margin-top: var(--space-lg);
+        }
+        
+        /* Educator card flip effect */
+        .educator-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform var(--transition-slow);
+            transform-style: preserve-3d;
+        }
+        
+        .educator-card:hover .educator-card-inner {
+            transform: rotateY(180deg);
+        }
+        
+        .educator-card-front, .educator-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+        }
+        
+        .educator-card-back {
+            transform: rotateY(180deg);
+            padding: var(--space-xl);
+        }
+        
+        .educator-details {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            line-height: 1.6;
+        }
+        
+        .educator-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-lg);
+        }
+        
+        /* ============ TESTIMONIALS SECTION ============ */
+        .testimonials {
+            background-color: var(--bg-primary);
+        }
+        
+        .testimonials-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .testimonials-carousel {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            overflow: hidden;
+        }
+        
+        .testimonials-track {
+            display: flex;
+            transition: transform var(--transition-medium);
+        }
+        
+        .testimonial-slide {
+            flex: 0 0 100%;
+            padding: 0 var(--space-md);
+        }
+        
+        .testimonial-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-xl);
+            position: relative;
+        }
+        
+        .testimonial-quote {
+            font-size: var(--font-size-4xl);
+            color: var(--primary-color);
+            opacity: 0.2;
+            position: absolute;
+            top: var(--space-md);
+            left: var(--space-md);
+        }
+        
+        .testimonial-content {
+            margin-bottom: var(--space-lg);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-content p {
+            font-size: var(--font-size-md);
+            font-style: italic;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            margin-right: var(--space-md);
+            overflow: hidden;
+        }
+        
+        .testimonial-author-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-author-info h4 {
+            font-size: var(--font-size-md);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .testimonial-author-info p {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+            margin-bottom: 0;
+        }
+        
+        .testimonials-navigation {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--space-xl);
+            gap: var(--space-md);
+        }
+        
+        .testimonial-nav-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .testimonial-nav-button:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: var(--space-lg);
+            gap: var(--space-sm);
+        }
+        
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: var(--bg-tertiary);
+            border: none;
+            cursor: pointer;
+            transition: background-color var(--transition-fast), transform var(--transition-fast);
+        }
+        
+        .testimonial-dot:hover, .testimonial-dot.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+        
+        /* ============ MOCK TEST SECTION ============ */
+        .mock-tests {
+            background-color: var(--bg-secondary);
+        }
+        
+        .mock-tests-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .mock-tests-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: var(--space-xl);
+        }
+        
+        .mock-tests-tab {
+            padding: var(--space-md) var(--space-xl);
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: none;
+            cursor: pointer;
+            font-family: var(--font-primary);
+            font-size: var(--font-size-md);
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .mock-tests-tab:first-child {
+            border-top-left-radius: var(--border-radius-full);
+            border-bottom-left-radius: var(--border-radius-full);
+        }
+        
+        .mock-tests-tab:last-child {
+            border-top-right-radius: var(--border-radius-full);
+            border-bottom-right-radius: var(--border-radius-full);
+        }
+        
+        .mock-tests-tab.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .mock-tests-content {
+            position: relative;
+        }
+        
+        .mock-tests-panel {
+            display: none;
+        }
+        
+        .mock-tests-panel.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .tests-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-xl);
+        }
+        
+        .test-card {
+            background-color: var(--bg-primary);
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+        }
+        
+        .test-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-xl);
+        }
+        
+        .test-card-header {
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--bg-tertiary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .test-card-title {
+            font-size: var(--font-size-lg);
+            margin-bottom: 0;
+        }
+        
+        .test-difficulty {
+            padding: var(--space-xs) var(--space-md);
+            border-radius: var(--border-radius-full);
+            font-size: var(--font-size-xs);
+            font-weight: 600;
+        }
+        
+        .test-difficulty.easy {
+            background-color: rgba(56, 176, 0, 0.2);
+            color: #38b000;
+        }
+        
+        .test-difficulty.medium {
+            background-color: rgba(255, 170, 0, 0.2);
+            color: #ffaa00;
+        }
+        
+        .test-difficulty.hard {
+            background-color: rgba(230, 57, 70, 0.2);
+            color: #e63946;
+        }
+        
+        .test-card-sections {
+            padding: var(--space-lg);
+            border-bottom: 1px solid var(--bg-tertiary);
+        }
+        
+        .test-section {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .test-section:last-child {
+            margin-bottom: 0;
+        }
+        
+        .test-section i {
+            width: 24px;
+            color: var(--primary-color);
+            margin-right: var(--space-sm);
+        }
+        
+        .test-card-stats {
+            padding: var(--space-lg);
+            display: flex;
+            justify-content: space-around;
+            border-bottom: 1px solid var(--bg-tertiary);
+        }
+        
+        .test-stat {
+            text-align: center;
+        }
+        
+        .test-stat-value {
+            font-size: var(--font-size-2xl);
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .test-stat-label {
+            font-size: var(--font-size-xs);
+            color: var(--text-secondary);
+        }
+        
+        .test-card-action {
+            padding: var(--space-lg);
+            text-align: center;
+        }
+        
+        /* ============ CONTACT SECTION ============ */
+        .contact {
+            background-color: var(--bg-primary);
+        }
+        
+        .contact-header {
+            text-align: center;
+            margin-bottom: var(--space-2xl);
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-3xl);
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .contact-info-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-lg);
+            margin-bottom: var(--space-xl);
+        }
+        
+        .contact-info-card {
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-lg);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform var(--transition-medium), box-shadow var(--transition-medium);
+        }
+        
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .contact-info-icon {
+            background-color: var(--primary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: var(--font-size-xl);
+            margin-bottom: var(--space-md);
+        }
+        
+        .contact-info-card h4 {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-sm);
+        }
+        
+        .contact-info-card p {
+            color: var(--text-secondary);
+            font-size: var(--font-size-sm);
+            margin-bottom: var(--space-xs);
+        }
+        
+        .contact-info-card p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .contact-map {
+            height: 300px;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .contact-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .contact-map-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(10, 10, 10, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: white;
+        }
+        
+        .contact-map-overlay i {
+            font-size: var(--font-size-3xl);
+            margin-bottom: var(--space-md);
+            color: var(--primary-color);
+        }
+        
+        .contact-form {
+            background-color: var(--bg-secondary);
+            border-radius: var(--border-radius-lg);
+            padding: var(--space-2xl);
+        }
+        
+        .contact-form-title {
+            font-size: var(--font-size-2xl);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+        }
+        
+        .contact-form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .contact-form-label {
+            display: block;
+            margin-bottom: var(--space-xs);
+            font-size: var(--font-size-sm);
+            font-weight: 500;
+        }
+        
+        .contact-form-input,
+        .contact-form-textarea,
+        .contact-form-select {
+            width: 100%;
+            padding: var(--space-md);
+            border-radius: var(--border-radius-md);
+            border: 1px solid var(--bg-tertiary);
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            font-family: var(--font-secondary);
+            font-size: var(--font-size-md);
+            transition: border-color var(--transition-fast);
+        }
+        
+        .contact-form-input:focus,
+        .contact-form-textarea:focus,
+        .contact-form-select:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+        
+        .contact-form-textarea {
+            resize: vertical;
+            min-height: 150px;
+        }
+        
+        .contact-form-checkbox {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-lg);
+        }
+        
+        .contact-form-checkbox input {
+            margin-right: var(--space-sm);
+            width: 20px;
+            height: 20px;
+        }
+        
+        .contact-form-checkbox label {
+            font-size: var(--font-size-sm);
+            color: var(--text-secondary);
+        }
+        
+        .contact-form-button {
+            width: 100%;
+        }
+        
+        /* ============ FOOTER ============ */
+        .footer {
+            background-color: var(--bg-secondary);
+            padding-top: var(--space-3xl);
+            position: relative;
+        }
+        
+        .footer-top {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: var(--space-2xl);
+            padding-bottom: var(--space-2xl);
+            border-bottom: 1px solid var(--bg-tertiary);
+        }
+        
+        .footer-brand {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: var(--space-md);
+        }
+        
+        .footer-logo-img {
+            height: 40px;
+            margin-right: var(--space-sm);
+        }
+        
+        .footer-logo-text {
+            font-family: var(--font-primary);
+            font-size: var(--font-size-xl);
+            font-weight: 700;
+        }
+        
+        .footer-about {
+            margin-bottom: var(--space-lg);
+            color: var(--text-secondary);
+        }
+        
+        .footer-social {
+            display: flex;
+            gap: var(--space-sm);
+        }
+        
+        .footer-social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--bg-tertiary);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background-color var(--transition-fast), color var(--transition-fast);
+        }
+        
+        .footer-social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .footer-title {
+            font-size: var(--font-size-lg);
+            margin-bottom: var(--space-lg);
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .footer-link-item {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-link {
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            transition: color var(--transition-fast), transform var(--transition-fast);
+        }
+        
+        .footer-link i {
+            margin-right: var(--space-sm);
+            font-size: var(--font-size-sm);
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+        
+        .footer-contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-md);
+            color: var(--text-secondary);
+        }
+        
+        .footer-contact-item i {
+            margin-right: var(--space-sm);
+            color: var(--primary-color);
+            font-size: var(--font-size-md);
+            margin-top: 4px;
+        }
+        
+        .footer-bottom {
+            padding: var(--space-lg) 0;
+            text-align: center;
+            color: var(--text-secondary);
+        }
+        
+        .footer-copyright {
+            font-size: var(--font-size-sm);
+        }
+        
+        .footer-back-to-top {
+            position: absolute;
+            bottom: var(--space-lg);
+            right: var(--space-lg);
+        }
+        
+        .back-to-top-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            cursor: pointer;
+            transition: background-color var(--transition-fast), transform var(--transition-fast);
+        }
+        
+        .back-to-top-btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-5px);
+        }
+        
+        /* ============ MOBILE RESPONSIVENESS ============ */
+        @media (max-width: 1200px) {
+            .footer-top {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+            
+            .footer-brand {
+                grid-column: 1 / -1;
+                margin-bottom: var(--space-xl);
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+            
+            .about-image {
+                order: -1;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+            
+            .contact-info {
+                order: 1;
+            }
+            
+            .hero-title {
+                font-size: var(--font-size-4xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--font-size-lg);
+            }
+            
+            .section {
+                padding: var(--space-2xl) 0;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .nav-toggle {
+                display: block;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: var(--space-md);
+            }
+            
+            .about-features {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+            
+            .contact-info-cards {
+                grid-template-columns: 1fr;
+                gap: var(--space-md);
+            }
+            
+            .footer-top {
+                grid-template-columns: 1fr;
+                gap: var(--space-xl);
+            }
+            
+            .footer-title {
+                margin-bottom: var(--space-md);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: var(--font-size-4xl);
+            }
+            
+            h2 {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .courses-grid, .educators-grid, .tests-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-scroll {
+                display: none;
+            }
+            
+            .hero-content {
+                padding: 0 var(--space-md);
+            }
+            
+            .hero-title {
+                font-size: var(--font-size-3xl);
+            }
+            
+            .hero-subtitle {
+                font-size: var(--font-size-md);
+            }
+            
+            .contact-form {
+                padding: var(--space-lg);
+            }
+            
+            .footer-bottom {
+                padding: var(--space-md) 0;
+            }
+            
+            .footer-back-to-top {
+                bottom: var(--space-lg);
+                right: var(--space-lg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Page Loader -->
+    <div class="page-loader">
+        <div class="loader-content">
+            <img src="/api/placeholder/100/100" alt="IELTS with Adi Logo" class="loader-logo">
+            <div class="loader-text">IELTS with Adi</div>
+        </div>
+    </div>
+    
+    <!-- Custom Cursor (visible on desktop only) -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+    
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="#" class="logo">
+                    <img src="/api/placeholder/40/40" alt="IELTS with Adi Logo" class="logo-img">
+                    <span class="logo-text">IELTS with Adi</span>
+                </a>
+                
+                <button class="nav-toggle" id="nav-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="nav">
+                    <ul class="nav-list">
+                        <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
+                        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                        <li class="nav-item"><a href="#courses" class="nav-link">Courses</a></li>
+                        <li class="nav-item"><a href="#educators" class="nav-link">Educators</a></li>
+                        <li class="nav-item"><a href="#mock-tests" class="nav-link">Mock Tests</a></li>
+                        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    </ul>
+                    
+                    <div class="nav-buttons">
+                        <button class="theme-toggle" id="theme-toggle">
+                            <i class="fas fa-moon"></i>
+                            <i class="fas fa-sun"></i>
+                        </button>
+                        <a href="#contact" class="btn btn-primary btn-animated">Get Started</a>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Navigation (Hidden by default) -->
+    <div class="mobile-nav" id="mobile-nav">
+        <ul class="mobile-nav-list">
+            <li class="mobile-nav-item"><a href="#hero" class="mobile-nav-link">Home</a></li>
+            <li class="mobile-nav-item"><a href="#about" class="mobile-nav-link">About</a></li>
+            <li class="mobile-nav-item"><a href="#courses" class="mobile-nav-link">Courses</a></li>
+            <li class="mobile-nav-item"><a href="#educators" class="mobile-nav-link">Educators</a></li>
+            <li class="mobile-nav-item"><a href="#mock-tests" class="mobile-nav-link">Mock Tests</a></li>
+            <li class="mobile-nav-item"><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        </ul>
+    </div>
+    
+    <!-- Hero Section -->
+    <section id="hero" class="hero">
+        <div class="hero-background">
+            <img src="/api/placeholder/1920/1080" alt="Hero Background">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="hero-particles" id="hero-particles"></div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title">
+                Master the IELTS with Expert 
+                <span class="text-gradient">Guidance</span>
+            </h1>
+            <p class="hero-subtitle">
+                Personalized coaching and comprehensive resources to help you achieve your target band score. 
+                <span class="text-shuffle">
+                    <span class="text-shuffle-items">Perfect for
+                        <span class="text-shuffle-wrapper">
+                            <span class="text-shuffle-item">students</span>
+                            <span class="text-shuffle-item">professionals</span>
+                            <span class="text-shuffle-item">immigrants</span>
+                            <span class="text-shuffle-item">researchers</span>
+                            <span class="text-shuffle-item">students</span>
+                        </span>
+                    </span>
+                </span>
+            </p>
+            <div class="hero-buttons">
+                <a href="#courses" class="btn btn-primary btn-animated magnetic-btn">Explore Courses</a>
+                <a href="#mock-tests" class="btn btn-outline magnetic-btn">Try Mock Test</a>
+            </div>
+        </div>
+        
+        <div class="hero-scroll">
+            <div class="hero-scroll-indicator"></div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+    
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        
+        <div class="container">
+            <div class="section-inner">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h2 class="about-title">What is <span class="highlight">IELTS</span>?</h2>
+                        <div class="about-text">
+                            <p>The International English Language Testing System (IELTS) is a standardized test designed to measure English language proficiency for non-native English speakers. It's widely recognized by universities, employers, and immigration authorities worldwide.</p>
+                            <p>IELTS assesses four key language skills: Listening, Reading, Writing, and Speaking, providing a comprehensive evaluation of your English communication abilities.</p>
+                        </div>
+                        
+                        <div class="about-features">
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h4>Academic Training</h4>
+                                    <p>For university admissions and professional certifications</p>
+                                </div>
+                            </div>
+                            
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h4>General Training</h4>
+                                    <p>For immigration, work experience, and training programs</p>
+                                </div>
+                            </div>
+                            
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h4>Global Recognition</h4>
+                                    <p>Accepted by over 11,000 organizations in 140 countries</p>
+                                </div>
+                            </div>
+                            
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h4>Band Scoring</h4>
+                                    <p>Scores range from 1-9, with most universities requiring 6.5-7.5</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#courses" class="btn btn-primary btn-animated">How We Can Help</a>
+                    </div>
+                    
+                    <div class="about-image">
+                        <img src="/api/placeholder/600/450" alt="About IELTS">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Courses Section -->
+    <section id="courses" class="section courses">
+        <div class="container">
+            <div class="section-inner">
+                <div class="courses-header">
+                    <h2 class="courses-title">Our <span class="highlight">Courses</span></h2>
+                    <p class="courses-description">Comprehensive courses designed to help you achieve your target IELTS score. Whether you're a beginner or aiming for a high band score, we have the right course for you.</p>
+                    
+                    <div class="courses-filters">
+                        <button class="courses-filter active" data-filter="all">All Levels</button>
+                        <button class="courses-filter" data-filter="beginner">Beginner</button>
+                        <button class="courses-filter" data-filter="intermediate">Intermediate</button>
+                        <button class="courses-filter" data-filter="advanced">Advanced</button>
+                    </div>
+                </div>
+                
+                <div class="courses-grid">
+                    <!-- Beginner Course -->
+                    <div class="course-card" data-category="beginner">
+                        <div class="course-badge beginner">Beginner</div>
+                        <div class="course-image">
+                            <img src="/api/placeholder/400/250" alt="IELTS Foundation Course">
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">IELTS Foundation Course</h3>
+                            <div class="course-meta">
+                                <div class="course-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>8 Weeks</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-video"></i>
+                                    <span>24 Lessons</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Max 15 Students</span>
+                                </div>
+                            </div>
+                            <p class="course-description">A comprehensive introduction to IELTS for beginners. This course covers the basics of all four sections: Listening, Reading, Writing, and Speaking.</p>
+                            <div class="course-features">
+                                <ul class="course-features-list">
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Introduction to test format</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Basic vocabulary development</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Grammar essentials</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>4 practice mock tests</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="course-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Intermediate Course -->
+                    <div class="course-card" data-category="intermediate">
+                        <div class="course-badge intermediate">Intermediate</div>
+                        <div class="course-image">
+                            <img src="/api/placeholder/400/250" alt="IELTS Comprehensive Preparation">
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">IELTS Comprehensive Preparation</h3>
+                            <div class="course-meta">
+                                <div class="course-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>10 Weeks</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-video"></i>
+                                    <span>30 Lessons</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Max 12 Students</span>
+                                </div>
+                            </div>
+                            <p class="course-description">Designed for intermediate learners who want to improve their IELTS score. This course provides in-depth strategies for each section.</p>
+                            <div class="course-features">
+                                <ul class="course-features-list">
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Advanced test techniques</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Academic vocabulary building</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Essay writing workshops</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>6 full mock tests with feedback</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="course-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Advanced Course -->
+                    <div class="course-card" data-category="advanced">
+                        <div class="course-badge advanced">Advanced</div>
+                        <div class="course-image">
+                            <img src="/api/placeholder/400/250" alt="IELTS Band 7+ Preparation">
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">IELTS Band 7+ Preparation</h3>
+                            <div class="course-meta">
+                                <div class="course-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>8 Weeks</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-video"></i>
+                                    <span>24 Lessons</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Max 8 Students</span>
+                                </div>
+                            </div>
+                            <p class="course-description">Designed for advanced students targeting Band 7 or higher. Focus on complex language skills, advanced vocabulary, and exam strategies.</p>
+                            <div class="course-features">
+                                <ul class="course-features-list">
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>High-level vocabulary development</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Complex grammar structures</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Advanced writing techniques</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Personalized feedback sessions</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="course-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Educators Section -->
+    <section id="educators" class="section educators">
+        <div class="container">
+            <div class="section-inner">
+                <div class="educators-header">
+                    <h2 class="section-title">Our <span class="highlight">Expert Educators</span></h2>
+                    <p class="courses-description">Learn from certified IELTS trainers with years of experience and proven track records of student success.</p>
+                </div>
+                
+                <div class="educators-grid">
+                    <!-- Educator 1 -->
+                    <div class="educator-card">
+                        <div class="educator-image">
+                            <img src="/api/placeholder/400/500" alt="Adi Johnson">
+                        </div>
+                        <div class="educator-content">
+                            <h3 class="educator-name">Adi Johnson</h3>
+                            <p class="educator-position">Lead IELTS Instructor & Founder</p>
+                            <div class="educator-rating">
+                                <div class="educator-rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="educator-rating-count">(128 reviews)</span>
+                            </div>
+                            <div class="educator-tags">
+                                <span class="educator-tag">Speaking</span>
+                                <span class="educator-tag">Writing</span>
+                                <span class="educator-tag">Test Strategy</span>
+                            </div>
+                            <div class="educator-info">
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Education</span>
+                                    <span class="educator-info-value">MA in Applied Linguistics</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Experience</span>
+                                    <span class="educator-info-value">12+ years</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Certifications</span>
+                                    <span class="educator-info-value">CELTA, DELTA</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Specialties</span>
+                                    <span class="educator-info-value">IELTS Examiner</span>
+                                </div>
+                            </div>
+                            <div class="educator-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Book a Session</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Educator 2 -->
+                    <div class="educator-card">
+                        <div class="educator-image">
+                            <img src="/api/placeholder/400/500" alt="Sarah Chen">
+                        </div>
+                        <div class="educator-content">
+                            <h3 class="educator-name">Sarah Chen</h3>
+                            <p class="educator-position">Writing Skills Specialist</p>
+                            <div class="educator-rating">
+                                <div class="educator-rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="educator-rating-count">(96 reviews)</span>
+                            </div>
+                            <div class="educator-tags">
+                                <span class="educator-tag">Writing</span>
+                                <span class="educator-tag">Grammar</span>
+                                <span class="educator-tag">Academic English</span>
+                            </div>
+                            <div class="educator-info">
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Education</span>
+                                    <span class="educator-info-value">PhD in English Literature</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Experience</span>
+                                    <span class="educator-info-value">8 years</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Certifications</span>
+                                    <span class="educator-info-value">TEFL</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Specialties</span>
+                                    <span class="educator-info-value">Academic Writing</span>
+                                </div>
+                            </div>
+                            <div class="educator-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Book a Session</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Educator 3 -->
+                    <div class="educator-card">
+                        <div class="educator-image">
+                            <img src="/api/placeholder/400/500" alt="Michael Rodriguez">
+                        </div>
+                        <div class="educator-content">
+                            <h3 class="educator-name">Michael Rodriguez</h3>
+                            <p class="educator-position">Speaking Coach & Pronunciation Expert</p>
+                            <div class="educator-rating">
+                                <div class="educator-rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="educator-rating-count">(112 reviews)</span>
+                            </div>
+                            <div class="educator-tags">
+                                <span class="educator-tag">Speaking</span>
+                                <span class="educator-tag">Pronunciation</span>
+                                <span class="educator-tag">Confidence Building</span>
+                            </div>
+                            <div class="educator-info">
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Education</span>
+                                    <span class="educator-info-value">MA in TESOL</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Experience</span>
+                                    <span class="educator-info-value">10 years</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Certifications</span>
+                                    <span class="educator-info-value">CELTA</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Specialties</span>
+                                    <span class="educator-info-value">Pronunciation</span>
+                                </div>
+                            </div>
+                            <div class="educator-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Book a Session</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <div class="section-inner">
+                <div class="testimonials-header">
+                    <h2 class="section-title">What Our <span class="highlight">Students Say</span></h2>
+                </div>
+                
+                <div class="testimonials-carousel">
+                    <div class="testimonials-track">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Adi's teaching methods were incredibly effective. I improved from Band 6.0 to 7.5 in just two months of focused study. The personalized feedback on my writing tasks made all the difference.</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-author-image">
+                                        <img src="/api/placeholder/80/80" alt="Student">
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <h4>Priya Sharma</h4>
+                                        <p>Achieved Band 7.5 | Now studying at University of Toronto</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Sarah's writing course transformed my approach to IELTS Task 2 essays. Her structured templates and vocabulary exercises helped me achieve Band 8 in the writing section, which was previously my weakest area.</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-author-image">
+                                        <img src="/api/placeholder/80/80" alt="Student">
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <h4>James Wilson</h4>
+                                        <p>Achieved Band 8.0 | Working in Australia</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Michael's speaking techniques helped me overcome my fear of the speaking test. His tips on pronunciation and how to structure my answers were invaluable. I finally got the score I needed for my visa application.</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-author-image">
+                                        <img src="/api/placeholder/80/80" alt="Student">
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <h4>Mei Lin</h4>
+                                        <p>Achieved Band 7.0 | Moved to New Zealand</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-dots">
+                        <button class="testimonial-dot active" data-slide="0"></button>
+                        <button class="testimonial-dot" data-slide="1"></button>
+                        <button class="testimonial-dot" data-slide="2"></button>
+                    </div>
+                    
+                    <div class="testimonials-navigation">
+                        <button class="testimonial-nav-button prev-testimonial">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="testimonial-nav-button next-testimonial">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Mock Tests Section -->
+    <section id="mock-tests" class="section mock-tests">
+        <div class="container">
+            <div class="section-inner">
+                <div class="mock-tests-header">
+                    <h2 class="section-title">IELTS <span class="highlight">Mock Tests</span></h2>
+                    <p class="courses-description">Practice with real-format IELTS tests to build your confidence and improve your score. Our mock tests simulate the actual exam experience.</p>
+                </div>
+                
+                <div class="mock-tests-tabs">
+                    <button class="mock-tests-tab active" data-tab="academic">Academic IELTS</button>
+                    <button class="mock-tests-tab" data-tab="general">General Training</button>
+                </div>
+                
+                <div class="mock-tests-content">
+                    <!-- Academic Tests Panel -->
+                    <div class="mock-tests-panel active" id="academic-panel">
+                        <div class="tests-grid">
+                            <!-- Test Card 1 -->
+                            <div class="test-card">
+                                <div class="test-card-header">
+                                    <h3 class="test-card-title">Academic Test 1</h3>
+                                    <span class="test-difficulty medium">Medium</span>
+                                </div>
+                                <div class="test-card-sections">
+                                    <div class="test-section">
+                                        <i class="fas fa-headphones"></i>
+                                        <span>Listening: 30 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-book-reader"></i>
+                                        <span>Reading: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-pen-fancy"></i>
+                                        <span>Writing: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-comments"></i>
+                                        <span>Speaking: 15 min</span>
+                                    </div>
+                                </div>
+                                <div class="test-card-stats">
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">76%</div>
+                                        <div class="test-stat-label">Completion Rate</div>
+                                    </div>
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">6.8</div>
+                                        <div class="test-stat-label">Avg. Score</div>
+                                    </div>
+                                </div>
+                                <div class="test-card-action">
+                                    <a href="#" class="btn btn-primary btn-animated">Start Test</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Test Card 2 -->
+                            <div class="test-card">
+                                <div class="test-card-header">
+                                    <h3 class="test-card-title">Academic Test 2</h3>
+                                    <span class="test-difficulty hard">Hard</span>
+                                </div>
+                                <div class="test-card-sections">
+                                    <div class="test-section">
+                                        <i class="fas fa-headphones"></i>
+                                        <span>Listening: 30 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-book-reader"></i>
+                                        <span>Reading: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-pen-fancy"></i>
+                                        <span>Writing: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-comments"></i>
+                                        <span>Speaking: 15 min</span>
+                                    </div>
+                                </div>
+                                <div class="test-card-stats">
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">65%</div>
+                                        <div class="test-stat-label">Completion Rate</div>
+                                    </div>
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">7.2</div>
+                                        <div class="test-stat-label">Avg. Score</div>
+                                    </div>
+                                </div>
+                                <div class="test-card-action">
+                                    <a href="#" class="btn btn-primary btn-animated">Start Test</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Test Card 3 -->
+                            <div class="test-card">
+                                <div class="test-card-header">
+                                    <h3 class="test-card-title">Academic Test 3</h3>
+                                    <span class="test-difficulty easy">Easy</span>
+                                </div>
+                                <div class="test-card-sections">
+                                    <div class="test-section">
+                                        <i class="fas fa-headphones"></i>
+                                        <span>Listening: 30 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-book-reader"></i>
+                                        <span>Reading: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-pen-fancy"></i>
+                                        <span>Writing: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-comments"></i>
+                                        <span>Speaking: 15 min</span>
+                                    </div>
+                                </div>
+                                <div class="test-card-stats">
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">89%</div>
+                                        <div class="test-stat-label">Completion Rate</div>
+                                    </div>
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">6.5</div>
+                                        <div class="test-stat-label">Avg. Score</div>
+                                    </div>
+                                </div>
+                                <div class="test-card-action">
+                                    <a href="#" class="btn btn-primary btn-animated">Start Test</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- General Training Tests Panel -->
+                    <div class="mock-tests-panel" id="general-panel">
+                        <div class="tests-grid">
+                            <!-- Test Card 1 -->
+                            <div class="test-card">
+                                <div class="test-card-header">
+                                    <h3 class="test-card-title">General Test 1</h3>
+                                    <span class="test-difficulty easy">Easy</span>
+                                </div>
+                                <div class="test-card-sections">
+                                    <div class="test-section">
+                                        <i class="fas fa-headphones"></i>
+                                        <span>Listening: 30 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-book-reader"></i>
+                                        <span>Reading: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-pen-fancy"></i>
+                                        <span>Writing: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-comments"></i>
+                                        <span>Speaking: 15 min</span>
+                                    </div>
+                                </div>
+                                <div class="test-card-stats">
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">92%</div>
+                                        <div class="test-stat-label">Completion Rate</div>
+                                    </div>
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">6.7</div>
+                                        <div class="test-stat-label">Avg. Score</div>
+                                    </div>
+                                </div>
+                                <div class="test-card-action">
+                                    <a href="#" class="btn btn-primary btn-animated">Start Test</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Test Card 2 -->
+                            <div class="test-card">
+                                <div class="test-card-header">
+                                    <h3 class="test-card-title">General Test 2</h3>
+                                    <span class="test-difficulty medium">Medium</span>
+                                </div>
+                                <div class="test-card-sections">
+                                    <div class="test-section">
+                                        <i class="fas fa-headphones"></i>
+                                        <span>Listening: 30 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-book-reader"></i>
+                                        <span>Reading: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-pen-fancy"></i>
+                                        <span>Writing: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-comments"></i>
+                                        <span>Speaking: 15 min</span>
+                                    </div>
+                                </div>
+                                <div class="test-card-stats">
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">79%</div>
+                                        <div class="test-stat-label">Completion Rate</div>
+                                    </div>
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">7.0</div>
+                                        <div class="test-stat-label">Avg. Score</div>
+                                    </div>
+                                </div>
+                                <div class="test-card-action">
+                                    <a href="#" class="btn btn-primary btn-animated">Start Test</a>
+                                </div>
+                            </div>
+                            
+                            <!-- Test Card 3 -->
+                            <div class="test-card">
+                                <div class="test-card-header">
+                                    <h3 class="test-card-title">General Test 3</h3>
+                                    <span class="test-difficulty hard">Hard</span>
+                                </div>
+                                <div class="test-card-sections">
+                                    <div class="test-section">
+                                        <i class="fas fa-headphones"></i>
+                                        <span>Listening: 30 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-book-reader"></i>
+                                        <span>Reading: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-pen-fancy"></i>
+                                        <span>Writing: 60 min</span>
+                                    </div>
+                                    <div class="test-section">
+                                        <i class="fas fa-comments"></i>
+                                        <span>Speaking: 15 min</span>
+                                    </div>
+                                </div>
+                                <div class="test-card-stats">
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">68%</div>
+                                        <div class="test-stat-label">Completion Rate</div>
+                                    </div>
+                                    <div class="test-stat">
+                                        <div class="test-stat-value">7.4</div>
+                                        <div class="test-stat-label">Avg. Score</div>
+                                    </div>
+                                </div>
+                                <div class="test-card-action">
+                                    <a href="#" class="btn btn-primary btn-animated">Start Test</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Contact Section -->
+    <section id="contact" class="section contact">
+        <div class="container">
+            <div class="section-inner">
+                <div class="contact-header">
+                    <h2 class="section-title">Get in <span class="highlight">Touch</span></h2>
+                    <p class="courses-description">Have questions or need assistance? We're here to help you on your IELTS journey.</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <div class="contact-info-cards">
+                            <div class="contact-info-card">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <h4>Visit Us</h4>
+                                <p>123 Education Street</p>
+                                <p>Learning City, LC 12345</p>
+                                <p>United States</p>
+                            </div>
+                            
+                            <div class="contact-info-card">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-phone"></i>
+                                </div>
+                                <h4>Call Us</h4>
+                                <p>+1 234 567 8900</p>
+                                <p>Toll-Free: 1-800-IELTS-ADI</p>
+                            </div>
+                            
+                            <div class="contact-info-card">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <h4>Email Us</h4>
+                                <p>info@ieltswitadi.com</p>
+                                <p>support@ieltswitadi.com</p>
+                            </div>
+                            
+                            <div class="contact-info-card">
+                                <div class="contact-info-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <h4>Office Hours</h4>
+                                <p>Monday - Friday: 9am - 6pm</p>
+                                <p>Saturday: 10am - 4pm</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-map">
+                            <img src="/api/placeholder/600/300" alt="Map">
+                            <div class="contact-map-overlay">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <p>IELTS with Adi</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-form">
+                        <h3 class="contact-form-title">Send Us a Message</h3>
+                        <form id="contact-form">
+                            <div class="contact-form-group">
+                                <label for="name" class="contact-form-label">Full Name</label>
+                                <input type="text" id="name" name="name" class="contact-form-input" placeholder="Your full name" required>
+                            </div>
+                            
+                            <div class="contact-form-group">
+                                <label for="email" class="contact-form-label">Email Address</label>
+                                <input type="email" id="email" name="email" class="contact-form-input" placeholder="Your email address" required>
+                            </div>
+                            
+                            <div class="contact-form-group">
+                                <label for="phone" class="contact-form-label">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" class="contact-form-input" placeholder="Your phone number (optional)">
+                            </div>
+                            
+                            <div class="contact-form-group">
+                                <label for="subject" class="contact-form-label">Subject</label>
+                                <select id="subject" name="subject" class="contact-form-select" required>
+                                    <option value="" disabled selected>Please select a subject</option>
+                                    <option value="general">General Inquiry</option>
+                                    <option value="courses">Course Information</option>
+                                    <option value="registration">Registration</option>
+                                    <option value="support">Technical Support</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+                            
+                            <div class="contact-form-group">
+                                <label for="message" class="contact-form-label">Message</label>
+                                <textarea id="message" name="message" class="contact-form-textarea" placeholder="Your message" rows="6" required></textarea>
+                            </div>
+                            
+                            <div class="contact-form-checkbox">
+                                <input type="checkbox" id="newsletter" name="newsletter">
+                                <label for="newsletter">Subscribe to our newsletter for IELTS tips and updates.</label>
+                            </div>
+                            
+                            <button type="submit" class="btn btn-primary btn-animated contact-form-button">
+                                <i class="fas fa-paper-plane"></i> Send Message
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <img src="/api/placeholder/40/40" alt="IELTS with Adi Logo" class="footer-logo-img">
+                        <span class="footer-logo-text">IELTS with Adi</span>
+                    </div>
+                    <p class="footer-about">
+                        Dedicated to helping students achieve their IELTS goals with personalized coaching and comprehensive resources.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="footer-social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link-item"><a href="#hero" class="footer-link"><i class="fas fa-angle-right"></i> Home</a></li>
+                        <li class="footer-link-item"><a href="#about" class="footer-link"><i class="fas fa-angle-right"></i> About</a></li>
+                        <li class="footer-link-item"><a href="#courses" class="footer-link"><i class="fas fa-angle-right"></i> Courses</a></li>
+                        <li class="footer-link-item"><a href="#educators" class="footer-link"><i class="fas fa-angle-right"></i> Educators</a></li>
+                        <li class="footer-link-item"><a href="#mock-tests" class="footer-link"><i class="fas fa-angle-right"></i> Mock Tests</a></li>
+                        <li class="footer-link-item"><a href="#contact" class="footer-link"><i class="fas fa-angle-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-section">
+                    <h4 class="footer-title">Resources</h4>
+                    <ul class="footer-links">
+                        <li class="footer-link-item"><a href="#" class="footer-link"><i class="fas fa-angle-right"></i> IELTS Blog</a></li>
+                        <li class="footer-link-item"><a href="#" class="footer-link"><i class="fas fa-angle-right"></i> Free Practice Tests</a></li>
+                        <li class="footer-link-item"><a href="#" class="footer-link"><i class="fas fa-angle-right"></i> Writing Samples</a></li>
+                        <li class="footer-link-item"><a href="#" class="footer-link"><i class="fas fa-angle-right"></i> Speaking Topics</a></li>
+                        <li class="footer-link-item"><a href="#" class="footer-link"><i class="fas fa-angle-right"></i> Vocabulary Lists</a></li>
+                        <li class="footer-link-item"><a href="#" class="footer-link"><i class="fas fa-angle-right"></i> Student Success Stories</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links-section">
+                    <h4 class="footer-title">Contact Info</h4>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>123 Education Street, Learning City, LC 12345, United States</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>info@ieltswitadi.com</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>+1 234 567 8900</div>
+                    </div>
+                    <div class="footer-contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div>Mon-Fri: 9am - 6pm</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-copyright">&copy; 2025 IELTS with Adi. All rights reserved.</p>
+            </div>
+            
+            <div class="footer-back-to-top">
+                <button class="back-to-top-btn" id="back-to-top-btn">
+                    <i class="fas fa-arrow-up"></i>
+                </button>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script>
+        // ==================== UTILITIES ====================
+        // Utility function for smooth scrolling
+        function scrollToElement(element, duration = 1000) {
+            const targetPosition = element.getBoundingClientRect().top + window.pageYOffset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
+            
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                const ease = t => t<.5 ? 4*t*t*t : (t-1)*(2*t-2)*(2*t-2)+1;
+                window.scrollTo(0, startPosition + distance * ease(progress));
+                
+                if (timeElapsed < duration) {
+                    requestAnimationFrame(animation);
+                }
+            }
+            
+            requestAnimationFrame(animation);
+        }
+        
+        // Debounce function
+        function debounce(func, wait, immediate) {
+            let timeout;
+            
+            return function executedFunction() {
+                const context = this;
+                const args = arguments;
+                
+                const later = function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                
+                const callNow = immediate && !timeout;
+                
+                clearTimeout(timeout);
+                
+                timeout = setTimeout(later, wait);
+                
+                if (callNow) func.apply(context, args);
+            };
+        }
+        
+        // ==================== INITIALIZATION ====================
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize page loader
+            initPageLoader();
+            
+            // Initialize custom cursor
+            initCustomCursor();
+            
+            // Initialize navigation
+            initNavigation();
+            
+            // Initialize smooth scrolling
+            initSmoothScrolling();
+            
+            // Initialize theme toggle
+            initThemeToggle();
+            
+            // Initialize scroll animations
+            initScrollAnimations();
+            
+            // Initialize course filters
+            initCourseFilters();
+            
+            // Initialize testimonials carousel
+            initTestimonialsCarousel();
+            
+            // Initialize mock test tabs
+            initMockTestTabs();
+            
+            // Initialize contact form
+            initContactForm();
+            
+            // Initialize back to top button
+            initBackToTop();
+            
+            // Initialize magnetic buttons
+            initMagneticButtons();
+            
+            // Initialize header scroll effect
+            initHeaderScroll();
+            
+            // Initialize text shuffle effect
+            initTextShuffle();
+            
+            // Initialize particles background
+            initParticlesBackground();
+        });
+        
+        // ==================== PAGE LOADER ====================
+        function initPageLoader() {
+            // Show body content
+            document.body.classList.add('loaded');
+            
+            // Hide loader after delay
+            setTimeout(() => {
+                const loader = document.querySelector('.page-loader');
+                loader.classList.add('loaded');
+            }, 2000);
+        }
+        
+        // ==================== CUSTOM CURSOR ====================
+        function initCustomCursor() {
+            const cursor = document.querySelector('.cursor');
+            const cursorFollower = document.querySelector('.cursor-follower');
+            
+            // Don't initialize on touch devices
+            if ('ontouchstart' in window) {
+                cursor.style.display = 'none';
+                cursorFollower.style.display = 'none';
+                return;
+            }
+            
+            document.addEventListener('mousemove', e => {
+                cursor.style.left = `${e.clientX}px`;
+                cursor.style.top = `${e.clientY}px`;
+                
+                // Add slight delay to follower for smooth effect
+                setTimeout(() => {
+                    cursorFollower.style.left = `${e.clientX}px`;
+                    cursorFollower.style.top = `${e.clientY}px`;
+                }, 50);
+            });
+            
+            // Add hover effect on buttons and links
+            const hoverElements = document.querySelectorAll('a, button, .educator-card, .course-card, .test-card');
+            
+            hoverElements.forEach(element => {
+                element.addEventListener('mouseover', () => {
+                    cursor.classList.add('hover');
+                    cursorFollower.classList.add('hover');
+                });
+                
+                element.addEventListener('mouseleave', () => {
+                    cursor.classList.remove('hover');
+                    cursorFollower.classList.remove('hover');
+                });
+            });
+            
+            // Hide cursor when leaving window
+            document.addEventListener('mouseout', () => {
+                cursor.classList.add('hidden');
+                cursorFollower.classList.add('hidden');
+            });
+            
+            document.addEventListener('mouseover', () => {
+                cursor.classList.remove('hidden');
+                cursorFollower.classList.remove('hidden');
+            });
+        }
+        
+        // ==================== NAVIGATION ====================
+        function initNavigation() {
+            const navToggle = document.getElementById('nav-toggle');
+            const mobileNav = document.getElementById('mobile-nav');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            // Toggle mobile navigation
+            navToggle.addEventListener('click', () => {
+                mobileNav.classList.toggle('active');
+                navToggle.innerHTML = mobileNav.classList.contains('active')
+                    ? '<i class="fas fa-times"></i>'
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Close mobile navigation when clicking on a link
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                    navToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+            
+            // Active nav item on scroll
+            window.addEventListener('scroll', debounce(function() {
+                let current = '';
+                
+                const sections = document.querySelectorAll('section[id]');
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 150;
+                    const sectionHeight = section.offsetHeight;
+                    
+                    if (window.pageYOffset >= sectionTop && window.pageYOffset < sectionTop + sectionHeight) {
+                        current = section.getAttribute('id');
+                    }
+                });
+                
+                // Update desktop navigation
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    }
+                });
+                
+                // Update mobile navigation
+                document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                    if (link.getAttribute('href') === `#${current}`) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+            }, 100));
+        }
+        
+        // ==================== SMOOTH SCROLLING ====================
+        function initSmoothScrolling() {
+            const links = document.querySelectorAll('a[href^="#"]');
+            
+            links.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(link.getAttribute('href'));
+                    
+                    if (target) {
+                        scrollToElement(target, 800);
+                    }
+                });
+            });
+        }
+        
+        // ==================== THEME TOGGLE ====================
+        function initThemeToggle() {
+            const themeToggle = document.getElementById('theme-toggle');
+            
+            // Check for saved theme preference
+            const savedTheme = localStorage.getItem('theme');
+            if (savedTheme === 'light') {
+                document.documentElement.classList.add('light-mode');
+            }
+            
+            themeToggle.addEventListener('click', () => {
+                document.documentElement.classList.toggle('light-mode');
+                
+                // Save theme preference
+                const isLightMode = document.documentElement.classList.contains('light-mode');
+                localStorage.setItem('theme', isLightMode ? 'light' : 'dark');
+            });
+        }
+        
+        // ==================== SCROLL ANIMATIONS ====================
+        function initScrollAnimations() {
+            const animatedElements = document.querySelectorAll(
+                '.about-content, .about-image, .about-feature, ' +
+                '.course-card, .educator-card, .test-card, ' +
+                '.contact-info-card, .contact-form'
+            );
+            
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animated', 'fadeInUp');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                observer.observe(element);
+            });
+        }
+        
+        // ==================== COURSE FILTERS ====================
+        function initCourseFilters() {
+            const filterButtons = document.querySelectorAll('.courses-filter');
+            const courseCards = document.querySelectorAll('.course-card');
+            
+            filterButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Get the filter value
+                    const filter = button.getAttribute('data-filter');
+                    
+                    // Filter course cards
+                    courseCards.forEach(card => {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.style.display = 'block';
+                            setTimeout(() => {
+                                card.style.opacity = '1';
+                                card.style.transform = 'translateY(0)';
+                            }, 100);
+                        } else {
+                            card.style.opacity = '0';
+                            card.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                card.style.display = 'none';
+                            }, 300);
+                        }
+                    });
+                });
+            });
+        }
+        
+        // ==================== TESTIMONIALS CAROUSEL ====================
+        function initTestimonialsCarousel() {
+            const track = document.querySelector('.testimonials-track');
+            const slides = document.querySelectorAll('.testimonial-slide');
+            const dots = document.querySelectorAll('.testimonial-dot');
+            const prevButton = document.querySelector('.prev-testimonial');
+            const nextButton = document.querySelector('.next-testimonial');
+            
+            let currentIndex = 0;
+            const slideWidth = 100; // 100%
+            
+            // Set initial position
+            updateCarousel();
+            
+            // Event listeners for navigation
+            prevButton.addEventListener('click', () => {
+                currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+                updateCarousel();
+            });
+            
+            nextButton.addEventListener('click', () => {
+                currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            });
+            
+            // Click on dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Auto-advance carousel
+            let carouselInterval = setInterval(() => {
+                currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                updateCarousel();
+            }, 5000);
+            
+            // Pause auto-advance on hover
+            const carousel = document.querySelector('.testimonials-carousel');
+            carousel.addEventListener('mouseenter', () => {
+                clearInterval(carouselInterval);
+            });
+            
+            carousel.addEventListener('mouseleave', () => {
+                carouselInterval = setInterval(() => {
+                    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+                    updateCarousel();
+                }, 5000);
+            });
+            
+            function updateCarousel() {
+                // Update track position
+                track.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
+                
+                // Update dot states
+                dots.forEach((dot, index) => {
+                    if (index === currentIndex) {
+                        dot.classList.add('active');
+                    } else {
+                        dot.classList.remove('active');
+                    }
+                });
+            }
+        }
+        
+        // ==================== MOCK TEST TABS ====================
+        function initMockTestTabs() {
+            const tabButtons = document.querySelectorAll('.mock-tests-tab');
+            const tabPanels = document.querySelectorAll('.mock-tests-panel');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Remove active class from all buttons
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    
+                    // Add active class to clicked button
+                    button.classList.add('active');
+                    
+                    // Show corresponding panel
+                    const tabId = button.getAttribute('data-tab');
+                    
+                    tabPanels.forEach(panel => {
+                        panel.classList.remove('active');
+                        if (panel.id === `${tabId}-panel`) {
+                            panel.classList.add('active');
+                        }
+                    });
+                });
+            });
+        }
+        
+        // ==================== CONTACT FORM ====================
+        function initContactForm() {
+            const contactForm = document.getElementById('contact-form');
+            
+            contactForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                // Get form data
+                const formData = new FormData(contactForm);
+                const formValues = Object.fromEntries(formData.entries());
+                
+                // Simulate form submission
+                const submitButton = contactForm.querySelector('button[type="submit"]');
+                const originalButtonText = submitButton.innerHTML;
+                
+                submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                submitButton.disabled = true;
+                
+                // Simulate API call
+                setTimeout(() => {
+                    // Reset form
+                    contactForm.reset();
+                    
+                    // Show success message
+                    submitButton.innerHTML = '<i class="fas fa-check"></i> Message Sent!';
+                    submitButton.style.backgroundColor = '#38b000';
+                    
+                    // Reset button after delay
+                    setTimeout(() => {
+                        submitButton.innerHTML = originalButtonText;
+                        submitButton.style.backgroundColor = '';
+                        submitButton.disabled = false;
+                    }, 3000);
+                }, 2000);
+            });
+        }
+        
+        // ==================== BACK TO TOP ====================
+        function initBackToTop() {
+            const backToTopBtn = document.getElementById('back-to-top-btn');
+            
+            window.addEventListener('scroll', () => {
+                if (window.pageYOffset > 500) {
+                    backToTopBtn.style.opacity = '1';
+                    backToTopBtn.style.transform = 'scale(1)';
+                } else {
+                    backToTopBtn.style.opacity = '0';
+                    backToTopBtn.style.transform = 'scale(0.8)';
+                }
+            });
+            
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // ==================== MAGNETIC BUTTONS ====================
+        function initMagneticButtons() {
+            const magneticButtons = document.querySelectorAll('.magnetic-btn');
+            
+            // Skip on touch devices
+            if ('ontouchstart' in window) return;
+            
+            magneticButtons.forEach(button => {
+                button.addEventListener('mousemove', function(e) {
+                    const boundingRect = this.getBoundingClientRect();
+                    const centerX = boundingRect.left + boundingRect.width / 2;
+                    const centerY = boundingRect.top + boundingRect.height / 2;
+                    
+                    const distanceX = e.clientX - centerX;
+                    const distanceY = e.clientY - centerY;
+                    
+                    // Calculate distance from center (max 15px movement)
+                    const maxDistance = 15;
+                    const moveX = distanceX * maxDistance / (boundingRect.width / 2);
+                    const moveY = distanceY * maxDistance / (boundingRect.height / 2);
+                    
+                    this.style.transform = `translate(${moveX}px, ${moveY}px)`;
+                });
+                
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = '';
+                });
+            });
+        }
+        
+        // ==================== HEADER SCROLL EFFECT ====================
+        function initHeaderScroll() {
+            const header = document.querySelector('.header');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        }
+        
+        // ==================== TEXT SHUFFLE EFFECT ====================
+        function initTextShuffle() {
+            // This is handled by CSS animations, but could be enhanced with JS
+            const textShuffleItems = document.querySelectorAll('.text-shuffle-item');
+            
+            if (textShuffleItems.length > 0) {
+                // Add additional text shuffle animations if needed
+            }
+        }
+        
+        // ==================== PARTICLES BACKGROUND ====================
+        function initParticlesBackground() {
+            const particlesContainer = document.getElementById('hero-particles');
+            
+            // Create particles
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                
+                // Random position
+                const posX = Math.random() * 100;
+                const posY = Math.random() * 100;
+                
+                // Random size
+                const size = Math.random() * 5 + 2;
+                
+                // Random opacity
+                const opacity = Math.random() * 0.5 + 0.1;
+                
+                // Apply styles
+                particle.style.cssText = `
+                    position: absolute;
+                    width: ${size}px;
+                    height: ${size}px;
+                    background-color: rgba(255, 255, 255, ${opacity});
+                    border-radius: 50%;
+                    left: ${posX}%;
+                    top: ${posY}%;
+                    animation: floatParticle ${Math.random() * 10 + 10}s linear infinite;
+                `;
+                
+                particlesContainer.appendChild(particle);
+            }
+        }
+        
+        // Define the float animation
+        const styleSheet = document.createElement('style');
+                                styleSheet.textContent = `
+            @keyframes floatParticle {
+                0% {
+                    transform: translate(0, 0);
+                }
+                25% {
+                    transform: translate(10px, 10px);
+                }
+                50% {
+                    transform: translate(0, 20px);
+                }
+                75% {
+                    transform: translate(-10px, 10px);
+                }
+                100% {
+                    transform: translate(0, 0);
+                }
+            }
+            
+            .light-mode .text-gradient {
+                background: linear-gradient(to right, #2563eb, #e74c3c);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+            }
+            
+            .light-mode .text-primary {
+                color: #2563eb;
+            }
+            
+            .light-mode .text-accent {
+                color: #e74c3c;
+            }
+            
+            .light-mode .highlight {
+                color: #e74c3c;
+            }
+        `;
+        document.head.appendChild(styleSheet);
+    </script>
+</body>
+</html>
+    
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="bg-blob bg-blob-1"></div>
+        <div class="bg-blob bg-blob-2"></div>
+        
+        <div class="container">
+            <div class="section-inner">
+                <div class="about-grid">
+                    <div class="about-content">
+                        <h2 class="about-title">What is <span class="highlight">IELTS</span>?</h2>
+                        <div class="about-text">
+                            <p>The International English Language Testing System (IELTS) is a standardized test designed to measure English language proficiency for non-native English speakers. It's widely recognized by universities, employers, and immigration authorities worldwide.</p>
+                            <p>IELTS assesses four key language skills: Listening, Reading, Writing, and Speaking, providing a comprehensive evaluation of your English communication abilities.</p>
+                        </div>
+                        
+                        <div class="about-features">
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-graduation-cap"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h4>Academic Training</h4>
+                                    <p>For university admissions and professional certifications</p>
+                                </div>
+                            </div>
+                            
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h4>General Training</h4>
+                                    <p>For immigration, work experience, and training programs</p>
+                                </div>
+                            </div>
+                            
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h4>Global Recognition</h4>
+                                    <p>Accepted by over 11,000 organizations in 140 countries</p>
+                                </div>
+                            </div>
+                            
+                            <div class="about-feature">
+                                <div class="about-feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <div class="about-feature-content">
+                                    <h4>Band Scoring</h4>
+                                    <p>Scores range from 1-9, with most universities requiring 6.5-7.5</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <a href="#courses" class="btn btn-primary btn-animated">How We Can Help</a>
+                    </div>
+                    
+                    <div class="about-image">
+                        <img src="/api/placeholder/600/450" alt="About IELTS">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Courses Section -->
+    <section id="courses" class="section courses">
+        <div class="container">
+            <div class="section-inner">
+                <div class="courses-header">
+                    <h2 class="courses-title">Our <span class="highlight">Courses</span></h2>
+                    <p class="courses-description">Comprehensive courses designed to help you achieve your target IELTS score. Whether you're a beginner or aiming for a high band score, we have the right course for you.</p>
+                    
+                    <div class="courses-filters">
+                        <button class="courses-filter active" data-filter="all">All Levels</button>
+                        <button class="courses-filter" data-filter="beginner">Beginner</button>
+                        <button class="courses-filter" data-filter="intermediate">Intermediate</button>
+                        <button class="courses-filter" data-filter="advanced">Advanced</button>
+                    </div>
+                </div>
+                
+                <div class="courses-grid">
+                    <!-- Beginner Course -->
+                    <div class="course-card" data-category="beginner">
+                        <div class="course-badge beginner">Beginner</div>
+                        <div class="course-image">
+                            <img src="/api/placeholder/400/250" alt="IELTS Foundation Course">
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">IELTS Foundation Course</h3>
+                            <div class="course-meta">
+                                <div class="course-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>8 Weeks</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-video"></i>
+                                    <span>24 Lessons</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Max 15 Students</span>
+                                </div>
+                            </div>
+                            <p class="course-description">A comprehensive introduction to IELTS for beginners. This course covers the basics of all four sections: Listening, Reading, Writing, and Speaking.</p>
+                            <div class="course-features">
+                                <ul class="course-features-list">
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Introduction to test format</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Basic vocabulary development</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Grammar essentials</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>4 practice mock tests</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="course-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Intermediate Course -->
+                    <div class="course-card" data-category="intermediate">
+                        <div class="course-badge intermediate">Intermediate</div>
+                        <div class="course-image">
+                            <img src="/api/placeholder/400/250" alt="IELTS Comprehensive Preparation">
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">IELTS Comprehensive Preparation</h3>
+                            <div class="course-meta">
+                                <div class="course-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>10 Weeks</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-video"></i>
+                                    <span>30 Lessons</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Max 12 Students</span>
+                                </div>
+                            </div>
+                            <p class="course-description">Designed for intermediate learners who want to improve their IELTS score. This course provides in-depth strategies for each section.</p>
+                            <div class="course-features">
+                                <ul class="course-features-list">
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Advanced test techniques</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Academic vocabulary building</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Essay writing workshops</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>6 full mock tests with feedback</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="course-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Advanced Course -->
+                    <div class="course-card" data-category="advanced">
+                        <div class="course-badge advanced">Advanced</div>
+                        <div class="course-image">
+                            <img src="/api/placeholder/400/250" alt="IELTS Band 7+ Preparation">
+                        </div>
+                        <div class="course-content">
+                            <h3 class="course-title">IELTS Band 7+ Preparation</h3>
+                            <div class="course-meta">
+                                <div class="course-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>8 Weeks</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-video"></i>
+                                    <span>24 Lessons</span>
+                                </div>
+                                <div class="course-meta-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>Max 8 Students</span>
+                                </div>
+                            </div>
+                            <p class="course-description">Designed for advanced students targeting Band 7 or higher. Focus on complex language skills, advanced vocabulary, and exam strategies.</p>
+                            <div class="course-features">
+                                <ul class="course-features-list">
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>High-level vocabulary development</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Complex grammar structures</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Advanced writing techniques</span>
+                                    </li>
+                                    <li class="course-features-item">
+                                        <i class="fas fa-check-circle"></i>
+                                        <span>Personalized feedback sessions</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="course-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Enroll Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Educators Section -->
+    <section id="educators" class="section educators">
+        <div class="container">
+            <div class="section-inner">
+                <div class="educators-header">
+                    <h2 class="section-title">Our <span class="highlight">Expert Educators</span></h2>
+                    <p class="courses-description">Learn from certified IELTS trainers with years of experience and proven track records of student success.</p>
+                </div>
+                
+                <div class="educators-grid">
+                    <!-- Educator 1 -->
+                    <div class="educator-card">
+                        <div class="educator-image">
+                            <img src="/api/placeholder/400/500" alt="Adi Johnson">
+                        </div>
+                        <div class="educator-content">
+                            <h3 class="educator-name">Adi Johnson</h3>
+                            <p class="educator-position">Lead IELTS Instructor & Founder</p>
+                            <div class="educator-rating">
+                                <div class="educator-rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="educator-rating-count">(128 reviews)</span>
+                            </div>
+                            <div class="educator-tags">
+                                <span class="educator-tag">Speaking</span>
+                                <span class="educator-tag">Writing</span>
+                                <span class="educator-tag">Test Strategy</span>
+                            </div>
+                            <div class="educator-info">
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Education</span>
+                                    <span class="educator-info-value">MA in Applied Linguistics</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Experience</span>
+                                    <span class="educator-info-value">12+ years</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Certifications</span>
+                                    <span class="educator-info-value">CELTA, DELTA</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Specialties</span>
+                                    <span class="educator-info-value">IELTS Examiner</span>
+                                </div>
+                            </div>
+                            <div class="educator-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Book a Session</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Educator 2 -->
+                    <div class="educator-card">
+                        <div class="educator-image">
+                            <img src="/api/placeholder/400/500" alt="Sarah Chen">
+                        </div>
+                        <div class="educator-content">
+                            <h3 class="educator-name">Sarah Chen</h3>
+                            <p class="educator-position">Writing Skills Specialist</p>
+                            <div class="educator-rating">
+                                <div class="educator-rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star-half-alt"></i>
+                                </div>
+                                <span class="educator-rating-count">(96 reviews)</span>
+                            </div>
+                            <div class="educator-tags">
+                                <span class="educator-tag">Writing</span>
+                                <span class="educator-tag">Grammar</span>
+                                <span class="educator-tag">Academic English</span>
+                            </div>
+                            <div class="educator-info">
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Education</span>
+                                    <span class="educator-info-value">PhD in English Literature</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Experience</span>
+                                    <span class="educator-info-value">8 years</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Certifications</span>
+                                    <span class="educator-info-value">TEFL</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Specialties</span>
+                                    <span class="educator-info-value">Academic Writing</span>
+                                </div>
+                            </div>
+                            <div class="educator-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Book a Session</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Educator 3 -->
+                    <div class="educator-card">
+                        <div class="educator-image">
+                            <img src="/api/placeholder/400/500" alt="Michael Rodriguez">
+                        </div>
+                        <div class="educator-content">
+                            <h3 class="educator-name">Michael Rodriguez</h3>
+                            <p class="educator-position">Speaking Coach & Pronunciation Expert</p>
+                            <div class="educator-rating">
+                                <div class="educator-rating-stars">
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <span class="educator-rating-count">(112 reviews)</span>
+                            </div>
+                            <div class="educator-tags">
+                                <span class="educator-tag">Speaking</span>
+                                <span class="educator-tag">Pronunciation</span>
+                                <span class="educator-tag">Confidence Building</span>
+                            </div>
+                            <div class="educator-info">
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Education</span>
+                                    <span class="educator-info-value">MA in TESOL</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Experience</span>
+                                    <span class="educator-info-value">10 years</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Certifications</span>
+                                    <span class="educator-info-value">CELTA</span>
+                                </div>
+                                <div class="educator-info-item">
+                                    <span class="educator-info-label">Specialties</span>
+                                    <span class="educator-info-value">Pronunciation</span>
+                                </div>
+                            </div>
+                            <div class="educator-action">
+                                <a href="#contact" class="btn btn-primary btn-animated">Book a Session</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section testimonials">
+        <div class="container">
+            <div class="section-inner">
+                <div class="testimonials-header">
+                    <h2 class="section-title">What Our <span class="highlight">Students Say</span></h2>
+                </div>
+                
+                <div class="testimonials-carousel">
+                    <div class="testimonials-track">
+                        <!-- Testimonial 1 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Adi's teaching methods were incredibly effective. I improved from Band 6.0 to 7.5 in just two months of focused study. The personalized feedback on my writing tasks made all the difference.</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-author-image">
+                                        <img src="/api/placeholder/80/80" alt="Student">
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <h4>Priya Sharma</h4>
+                                        <p>Achieved Band 7.5 | Now studying at University of Toronto</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 2 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Sarah's writing course transformed my approach to IELTS Task 2 essays. Her structured templates and vocabulary exercises helped me achieve Band 8 in the writing section, which was previously my weakest area.</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-author-image">
+                                        <img src="/api/placeholder/80/80" alt="Student">
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <h4>James Wilson</h4>
+                                        <p>Achieved Band 8.0 | Working in Australia</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Testimonial 3 -->
+                        <div class="testimonial-slide">
+                            <div class="testimonial-card">
+                                <div class="testimonial-quote">
+                                    <i class="fas fa-quote-left"></i>
+                                </div>
+                                <div class="testimonial-content">
+                                    <p>Michael's speaking techniques helped me overcome my fear of the speaking test. His tips on pronunciation and how to structure my answers were invaluable. I finally got the score I needed for my visa application.</p>
+                                </div>
+                                <div class="testimonial-author">
+                                    <div class="testimonial-author-image">
+                                        <img src="/api/placeholder/80/80" alt="Student">
+                                    </div>
+                                    <div class="testimonial-author-info">
+                                        <h4>Mei Lin</h4>
+                                        <p>Achieved Band 7.0 | Moved to New Zealand</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-dots">
+                        <button class="testimonial-dot active" data-slide="0"></button>
+                        <button class="testimonial-dot" data-slide="1"></button>
+                        <button class="testimonial-dot" data-slide="2"></button>
+                    </div>
+                    
+                    <div class="testimonials-navigation">
+                        <button class="testimonial-nav-button prev-testimonial">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="testimonial-nav-button next-testimonial">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
